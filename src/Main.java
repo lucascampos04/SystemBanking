@@ -23,6 +23,8 @@ public class Main {
             escolha = scan.nextInt();
             scan.nextLine();
 
+            boolean isPerfilUser = false;
+
             switch (escolha) {
                 case 1:
                     System.out.println("Usuario : ");
@@ -31,7 +33,13 @@ public class Main {
                     System.out.println("Senha : ");
                     String senha = scan.next();
 
-                    logs.Login(nome, senha);
+                    boolean isLoginSuccess = logs.Login(nome, senha);
+
+                    if (isLoginSuccess){
+                        isPerfilUser = true;
+                        perfil();
+                    }
+
 
                     break;
                 case 2:
@@ -46,6 +54,7 @@ public class Main {
 
                     logs.CreateAccount(nomeCreate, senhaCreate, Integer.parseInt(ageCreate));
 
+
                     break;
                 case 0:
                     System.out.println("Saindo do programa.");
@@ -56,4 +65,10 @@ public class Main {
             }
         } while (escolha != 0);
     }
+
+    public static String perfil(){
+        System.out.println("PERFIL");
+        return null;
+    }
+
 }

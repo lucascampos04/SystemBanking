@@ -17,7 +17,7 @@ public class Logs {
         this.usuarios = new ArrayList<>();
     }
 
-    public void Login(String nome, String senha){
+    public boolean Login(String nome, String senha){
         boolean LoginSuccess = false;
 
         for (Usuario usuario : usuarios){
@@ -29,9 +29,11 @@ public class Logs {
 
         if (LoginSuccess){
             System.out.println("Login realizado com sucesso");
+
         } else {
             System.out.println("Nome ou senha de usuario incorretos. Tente novamente!");
         }
+        return LoginSuccess;
     }
 
     public void CreateAccount(String nome, String senha, int idade){
