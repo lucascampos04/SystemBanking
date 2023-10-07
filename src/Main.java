@@ -1,4 +1,5 @@
 import Services.Logs;
+import lombok.extern.java.Log;
 
 import java.util.Scanner;
 
@@ -15,6 +16,8 @@ public class Main {
         System.out.println("|          [0] Sair                |");
         System.out.println("+==================================+");
 
+        Logs logs = new Logs();
+
         do {
             System.out.println("Escolha : ");
             escolha = scan.nextInt();
@@ -28,12 +31,21 @@ public class Main {
                     System.out.println("Senha : ");
                     String senha = scan.next();
 
-                    Logs logs = new Logs();
                     logs.Login(nome, senha);
 
                     break;
                 case 2:
-                    System.out.println("Campo de criar conta");
+                    System.out.println("Nome : ");
+                    String nomeCreate = scan.next();
+
+                    System.out.println("Idade : ");
+                    String ageCreate = scan.next();
+
+                    System.out.println("Senha : ");
+                    String senhaCreate = scan.next();
+
+                    logs.CreateAccount(nomeCreate, senhaCreate, Integer.parseInt(ageCreate));
+
                     break;
                 case 0:
                     System.out.println("Saindo do programa.");

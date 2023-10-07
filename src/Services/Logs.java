@@ -52,5 +52,4 @@ public class Logs {
             System.out.println("Conta criada com sucesso");
         }
     }
-
 }
