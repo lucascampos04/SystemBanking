@@ -14,26 +14,21 @@ public class FazerPagamento {
         this.ted = new ArrayList<>();
     }
 
-    public void verificPagamentoPix(String chave, double valor){
-        boolean pagPixSuccess = false;
+    public void verificPagamentoPix(float valor){
+        boolean pagPixSuccess = true;
 
-        for (Pix pixTransaction : pix){
-            if (pixTransaction.getCpf().equals(chave)){
-                pagPixSuccess = true;
-                break;
+            if (valor < 2.00){
+                System.out.println("Valor mínimo: 2,00 R$");
+                pagPixSuccess = false;
             }
 
             if (pagPixSuccess){
-                if (valor < 2.00){
-                    System.out.println("Valor mínimo: 2,00 R$");
-                } else {
-                    System.out.println("Pagamento realizado com sucesso");
-                }
+                System.out.println("Pagamento realizado com sucesso");
             } else{
-                System.out.println("Erro: Transação Pix não encontrada");
+                System.out.println("Erro: Transação Pix não encontrada ou valor inválido");
             }
 
         }
 
     }
-}
+
