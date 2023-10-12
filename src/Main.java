@@ -1,4 +1,5 @@
 import Services.FormasDePagamentos.FazerPagamento;
+import Services.FormasDePagamentos.Ted;
 import Services.Logs;
 import Services.Usuario;
 
@@ -20,6 +21,7 @@ public class Main {
         System.out.println("+==================================+");
 
         Logs logs = new Logs();
+        Ted ted = new Ted();
 
         do {
             System.out.println("Escolha : ");
@@ -124,7 +126,7 @@ public class Main {
         System.out.println("[1] - Pix | [2] - Transferencia Bancaria | [3] - Boleto ");
         Integer escolha = scan.nextInt();
         scan.nextLine();
-
+        Ted ted = new Ted();
         String[] ChavesPix = {"CPF", "EMAIL", "CHAVE ALEATORIA", "CNPJ", "TELEFONE"};
         boolean continuar = true;
 
@@ -158,6 +160,8 @@ public class Main {
                     continuar = false;
                 }
             } while (continuar && escolha == 9);
+        } else if (escolha == 2) {
+            ted.validarDadosPessoais("Lucas", "123", "123");
         }
     }
 

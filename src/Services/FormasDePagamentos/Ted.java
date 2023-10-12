@@ -1,5 +1,10 @@
 package Services.FormasDePagamentos;
 
+import Services.Usuario;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
 public class Ted {
     private String nomeCompleto;
     private String cpf;
@@ -8,52 +13,18 @@ public class Ted {
     private String agenciaBancaria;
     private final String TIPO_CORRENTE = "Corrente";
     private final String TIPO_POUPANCA = "Poupança";
+    Usuario users = new Usuario();
+    public boolean validarDadosPessoais(String nomeCompleto, String cpf, String cnpj) {
+        boolean nomeValido = nomeCompleto != null && !nomeCompleto.trim().isEmpty() && nomeCompleto.matches("^[A-Za-z]+( [A-Za-z]+)*$");
+        boolean cpfValido = cpf != null && !cpf.trim().isEmpty() && cpf.matches("^[0-9]{11}$");
+        boolean cnpjValido = cnpj != null && !cnpj.trim().isEmpty() && cnpj.matches("^[0-9]{14}$");
 
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public String getBanco() {
-        return banco;
-    }
-
-    public void setBanco(String banco) {
-        this.banco = banco;
-    }
-
-    public String getAgenciaBancaria() {
-        return agenciaBancaria;
-    }
-
-    public void setAgenciaBancaria(String agenciaBancaria) {
-        this.agenciaBancaria = agenciaBancaria;
-    }
-
-    public String getTIPO_CORRENTE() {
-        return TIPO_CORRENTE;
-    }
-
-    public String getTIPO_POUPANCA() {
-        return TIPO_POUPANCA;
+        if (nomeValido && cpfValido && cnpjValido){
+            System.out.println("Dados válidos.");
+            return true;
+        } else {
+            System.out.println("Dados inválidos.");
+            return false;
+        }
     }
 }

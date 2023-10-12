@@ -16,6 +16,8 @@ public class Usuario {
     private String senha;
     private int idade;
     private Double saldo;
+    private String cpf;
+    private String cnpj;
 
     public Usuario(String nome, String senha, int idade) {
         this.nome = nome;
